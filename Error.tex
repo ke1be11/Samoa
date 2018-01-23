@@ -1,0 +1,274 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+\usepackage{setspace} 
+\usepackage{amsmath}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\journal{Personal Notes}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+\title{Errors for near-inertial wave calculations}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Kelly Pearson-Potts}
+
+\address{Hawaii, United States}
+
+\begin{abstract}
+%% Text of abstract
+
+\end{abstract}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+\linenumbers
+\onehalfspacing
+\section{Background}
+In order to find some of the basic descriptors of a near-inertial wave, 
+\begin{equation}
+\Psi = Re(\Psi(z) exp(2pi(\omega_0t-kx-ly-m_0z'+\phi\psi)))
+\end{equation}
+we use a best fit plane-wave to describe the observations.  From this plane-wave we have the variables: $m$, $\omega$, and $\phi$.  Figure \ref{fig:chi2} shows the $\chi^2$ value for varying values of $\omega_1$.  With a red vertical line at what we are using for the best fit value ($0.35=1.04f$).  
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{chi2.pdf}
+    \caption{}
+    \label{fig:chi2}
+\end{figure}
+The next step is to calculate the error on each of these variables so that we are able to determine the error in the various subsequent calculations.  This is especially important in the assessment of the validity of our descriptions of the observed wave.
+
+\section{Initial error--test statistic}
+\noindent Hypothesis testing:\\
+$H_0 : \bar{V_a} = \bar{V_b}$\\
+$H_1 : \bar{V_a} \neq \bar{V_b}$\\
+\begin{equation}
+Z_{95} = \frac{\bar{V_a}-\bar{V_b}}{(\frac{s^2_a}{N_a}-\frac{s^2_b}{N_b})^{\frac{1}{2}}}
+\end{equation}
+Where:\\
+$t_{95} = 1.646 = $The $95\%$ significance level for a one-tailed confidence interval.\\
+$\bar{V_a} = $ average difference between the observations and the best fit plane-wave squared\\
+$\bar{V_b} = $ average difference between the observations and the plane-wave, with various values for $m$, $\omega$, and $\phi$, independently while holding the other two variables constant, squared\\
+$s_a^2 = \frac{\Sigma(V_a-\bar{V_a})^2}{N-1} = $variance of the expected plane-wave solution\\
+$s_b^2 = \frac{\Sigma(V_b-\bar{V_b})^2}{N-1} = $variance of the varying plane-wave solution\\
+$N_a = $number of independent measurements\\
+$N_b = $number of independent measurements\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{tscore_3.pdf}
+    \includegraphics[width=0.5\textwidth]{tscore_4.pdf}
+    \includegraphics[width=0.5\textwidth]{tscore_5.pdf}
+    \caption{Top - every third row independent, Middle - every fourth row independent, Bottom - every fifth row independent.  I've been using 4 because it was the widest possible before the intersection became imaginary.  The solid red line is the best fit value.  The dashed line is the t-score for a $95\%$ confidence interval.  The black line is the plot of the t-score for each value of the variable, in this case $\omega_1$.}
+    \label{fig:tscore}
+\end{figure}
+
+The t-score for over 1000 independent measurements at $95\%$ confidence interval is 1.646.  We calculate the Z-score for the plane-wave across varying values of $\omega_1$ ($[.28$ $.42]$ by $0.00005$).
+\subsection{Questions}
+\begin{itemize}
+\item How many rows should I use for independent measurements?
+\item Do I round to the nearest hundreth? Down on the lower bound and up on the upper bound?
+\item Should it be symmetric?
+\item If I divide by 4 is that saying every fourth row is independent or every third row is independent?
+\item if it is not symmetric do I need to calculate the upper and lower bounds independently in each error calculation?
+\end{itemize}
+
+\section{Errors}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{variable} & \textbf{error} & \textbf{method}\\
+\hline
+salinity & $\pm2\times10^{-3}$ & (Voet 2015)\\
+\hline
+temperature & $\pm 5 \times 10^{-4}$ $^\circ$C & (Voet 2015)\\
+\hline
+u, v & $2$ cm s$^{-1}$ & (Voet 2015)\\
+\hline
+$r_I$ & $\pm .06$ & RMS \\
+\hline
+$\omega_1$ & $\pm 0.02$ & t-score\\
+\hline
+$\omega_2$ & $\pm 0.01$ & t-score\\
+\hline
+$m_1$ & & t-score\\
+\hline
+$m_2$ & & t-score\\
+\hline
+$\phi_1$ & $\pm 20$& t-score\\
+\hline
+$\phi_2$ & $\pm 20$ & t-score\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{questions}
+\begin{itemize}
+\item What is the error of the lat and lon?  I know it's very small but it would play a role in the $f_{cor}$ and $f_{eff}$ calculation.
+\item Matthew uses the RMS of the $r_I$ for the error, we can also calculate this using the measured errors because $r_I = \sqrt{\frac{\frac{KE(z)}{PE(z)}+1}{\frac{KE(z)}{PE(z)}-1}}$
+\end{itemize}
+\section{Propagation of errors}
+How to propagate the errors through various calculations (Mandel 1984, Bevington and Robinson 1992):\\
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{equation} & \textbf{error}\\
+\hline
+$z = x + y + ...$ or $z = x - y - ...$ & $\sigma_z = \sqrt{(\sigma_x)^2+(\sigma_y)^2 + ...}$\\
+\hline
+$z = cx$ & $\sigma_z = c\sigma_x$\\
+\hline
+$z = \frac{x*y}{d}$ & $\frac{\sigma_z}{z}=\sqrt{(\frac{\sigma_x}{x})^2+(\frac{\sigma_y}{y})^2+(\frac{\sigma_d}{d})^2+...}$\\
+\hline
+$z = x^my^n$ & $\frac{\sigma_z}{z}=\sqrt{(\frac{m\sigma_x}{x})^2+(\frac{n\sigma_y}{y})^2}$\\
+\hline
+\end{tabular}
+\end{center}
+List of variables to calculate error:\\
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{variable} & \textbf{equation} & \textbf{error}\\
+\hline
+$\rho$ & & \\
+\hline
+N & & \\
+\hline
+$\Theta$ & & \\
+\hline
+$\|U\|$  & $\sqrt{u^2 + v^2}$& $\frac{1}{2}\sqrt{(u^2+v^2)((2u\sigma_u)^2+(2v\sigma_v)^2)}$\\
+\hline
+KE & $\frac{}{} \rho \langle u^2 + v^2 \rangle $& $\rho (u^2+v^2) \sqrt{(\frac{(2u\sigma_u)^2+(2v\sigma_v)^2}{u^2+v^2})^2+(\frac{\sigma_\rho}{\rho})^2}$\\
+\hline
+PE & $\frac{1}{2} \rho N^2 \langle \eta^2 \rangle$ & $\frac{1}{4}\rho N^2 \langle \eta^2 \rangle \sqrt{(\frac{2N\sigma_N}{N^2})^2+(\frac{2 \eta \sigma_\eta}{\eta^2})^2+(\frac{\sigma_\rho}{\rho})^2}$\\
+\hline
+$f_{eff}$ & $\sqrt{\frac{\omega_0^2}{r_I^2 + \frac{m^2U^2 cos^2(\theta - \alpha)}{N^2}(r_1^2-1)}}$ & See Eqn. \ref{eqn:error_f} below\\
+\hline
+K & $\sqrt{k^2+l^2} = \sqrt{\frac{m^2f_{eff}^2(r_1^2-1)}{N^2}}$ & $\frac{1}{2}\sqrt{\frac{m^2f^2_{eff}(r^2_I-1)}{N^2}\bigg[ (\frac{2\sigma_m}{m})^2+(\frac{2\sigma_{f_{eff}}}{f})^2+(\frac{2\sigma_{r_I}r_I}{r^2_I-1})^2+(\frac{2\sigma_N}{N})^2\bigg]}$\\
+\hline
+$\gamma$ & $\frac{\partial \eta}{\partial z} = \frac{\bar{N^2(z)}}{N^2(t,z)}-1$& \\
+\hline
+$u_z$, $v_z$ & & \\
+\hline
+Fr & $\frac{S}{N}$ & \\
+\hline
+\end{tabular}
+\end{center}
+{\tiny \begin{equation}
+ \sqrt{\frac{r^2_I+\frac{m^2U^2 cos^2(\theta - \alpha)}{N^2}(r_1^2-1)}{\omega_0^2} \Bigg[(\frac{2\sigma_{\omega_0}}{\omega_0})^2+\frac{(2\sigma_{r_I} r_I)^2+(\frac{m^2U^2 cos^2(\theta - \alpha)}{N^2}(r_1^2-1))((\frac{2\sigma_m}{m})^2+(\frac{2\sigma_U}{U})^2+(\frac{2\sigma_{r_I}r_I}{r^2_I-1})^2+(\frac{2\sigma_N}{N})^2)}{(r^2_I+\frac{m^2U^2 cos^2(\theta - \alpha)}{N^2}(r_1^2-1))^2}\Bigg]}
+\label{eqn:error_f}
+\end{equation}}
+\subsection{questions}
+\begin{itemize}
+\item for where I plug in the measured value do I plug in the average?  Max?
+\end{itemize}
+\doublespacing
+Example:\\
+\begin{center}
+$\|U\| = \sqrt{u^2+v^2}$\\
+error $u^2 \rightarrow \frac{\sigma_{u^2}}{u^2} = \frac{2\sigma_u}{u} \rightarrow \sigma_{u^2} =  2u\sigma_u$ \\
+error $u^2+v^2 \rightarrow \sigma_{u^2+v^2}=\sqrt{(2u\sigma_u)^2+(2v\sigma_v)^2}$\\
+error $\sqrt{u^2+v^2} \rightarrow \frac{\sigma_{\sqrt{u^2+v^2}}}{\sqrt{u^2+v^2}}=\frac{1}{2}\sqrt{(2u\sigma_u)^2+(2v\sigma_v)^2}$\\
+$\rightarrow \sigma_{\|U\|}=\frac{1}{2}\sqrt{(u^2+v^2)((2u\sigma_u)^2+(2v\sigma_v)^2)}$
+\end{center}
+\end{document}
+
+% V_a = \bar{(observation - best fit planewave fit)^2}
+% \sigma_a = (observation - planewave)^2
+% because it's the square we only need to do a one tail fit. 
+
+% gunnar's used matlab sw code to calculate the density so just use that equation. 
